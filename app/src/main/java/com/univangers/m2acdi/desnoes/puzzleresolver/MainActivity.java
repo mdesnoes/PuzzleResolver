@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openActivityPuzzle2(View v) {
-        //Intent ActivityPuzzle2 = new Intent(this, ???????????.class);
-        //startActivity(ActivityPuzzle2);
+        Intent ActivityPuzzle2 = new Intent(this, Puzzle2Activity.class);
+        startActivity(ActivityPuzzle2);
     }
 
     public void openActivityPuzzle3(View v) {

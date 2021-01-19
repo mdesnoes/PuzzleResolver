@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.univangers.m2acdi.desnoes.puzzleresolver.custom_view.Plateau
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:attribut1="film"
+        app:attribut2="jour"
+        app:attribut3="temps"
+        app:attribut4="nom"/>
+
+</LinearLayout>
