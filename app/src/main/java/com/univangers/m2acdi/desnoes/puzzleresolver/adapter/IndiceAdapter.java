@@ -1,6 +1,9 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +38,21 @@ public class IndiceAdapter extends RecyclerView.Adapter<IndiceAdapter.ViewHolder
         String indice = this.listeIndice.get(position);
 
         holder.tv_textIndice.setText(indice);
+        holder.tv_textIndice.setTextColor(Color.DKGRAY);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!holder.isUsed) {
+                    holder.tv_textIndice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                    holder.tv_textIndice.setTextColor(Color.GREEN);
+                } else {
+                    holder.tv_textIndice.setPaintFlags(0);
+                    holder.tv_textIndice.setTextColor(Color.DKGRAY);
+                }
+                holder.isUsed = !holder.isUsed;
+            }
+        });
 
         holder.itemView.setTag(position);
     }
@@ -53,6 +71,7 @@ public class IndiceAdapter extends RecyclerView.Adapter<IndiceAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_textIndice;
+        public boolean isUsed = false;
 
         public ViewHolder(View itemView) {
             super(itemView);

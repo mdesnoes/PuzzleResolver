@@ -20,4 +20,17 @@ public final class Data {
             "6. Neither Miss Farmer nor Miss Peters had a showing on an even-numbered day",
             "7. 88 Minutes showed at a time both 40 minutes to the hour and 40 minutes after the Thursday showing."));
 
+    public final static List<String> TAB_RESULTAT_PUZZLE2 = new ArrayList<String>(Arrays.asList("Nom", "Film", "Jour", "Temps"));
+
+
+    public static final List<String> getTableauValeursByNomAttribut(String att) {
+        switch(att.toUpperCase()) {
+            case "FILM": return TAB_FILM;
+            case "JOUR": return TAB_JOUR;
+            case "TEMPS": return TAB_TEMPS;
+            case "NOM": return  TAB_NOM;
+            default: return null;
+        }
+    }
+
 }

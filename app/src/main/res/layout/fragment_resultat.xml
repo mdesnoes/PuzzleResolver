@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <TableLayout
+        android:id="@+id/tl_resultat"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="It Works !"/>
+        android:layout_height="match_parent"></TableLayout>
 
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
 import com.univangers.m2acdi.desnoes.puzzleresolver.R;
 
 import java.util.ArrayList;
@@ -47,10 +48,10 @@ public class Plateau extends ViewGroup {
         /**
          * On recupère un tableau des données en fonction des noms des attributs
          */
-        List<String> tabValeurAtt1 = getValeursByNomAttribut(att1);
-        List<String> tabValeurAtt2 = getValeursByNomAttribut(att2);
-        List<String> tabValeurAtt3 = getValeursByNomAttribut(att3);
-        List<String> tabValeurAtt4 = getValeursByNomAttribut(att4);
+        List<String> tabValeurAtt1 = Data.getTableauValeursByNomAttribut(att1);
+        List<String> tabValeurAtt2 = Data.getTableauValeursByNomAttribut(att2);
+        List<String> tabValeurAtt3 = Data.getTableauValeursByNomAttribut(att3);
+        List<String> tabValeurAtt4 = Data.getTableauValeursByNomAttribut(att4);
 
 
         this.entetes = new ArrayList<EnteteTableau>();
@@ -77,16 +78,6 @@ public class Plateau extends ViewGroup {
          */
         this.entetes.forEach(enteteTableau -> addView(enteteTableau));
         this.grilles.forEach(grille -> addView(grille));
-    }
-
-    private List<String> getValeursByNomAttribut(String att1) {
-        switch(att1) {
-            case "film": return TAB_FILM;
-            case "jour": return TAB_JOUR;
-            case "temps": return TAB_TEMPS;
-            case "nom": return  TAB_NOM;
-            default: return null;
-        }
     }
 
 
