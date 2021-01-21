@@ -31,15 +31,6 @@ public class IndiceFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        this.rv_listeIndices = (RecyclerView) getActivity().findViewById(R.id.rv_liste_indice);
-//        this.rv_listeIndices.setLayoutManager(new LinearLayoutManager(getContext()));
-//        this.indiceAdapter = new IndiceAdapter(getContext());
-//        this.rv_listeIndices.setAdapter(this.indiceAdapter);
-//
-//        for(String indice : this.indices) {
-//            this.indiceAdapter.ajoute(indice);
-//        }
     }
 
     @Override

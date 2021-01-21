@@ -40,10 +40,10 @@ public class Plateau extends ViewGroup {
         /**
          * On recupère un tableau des données en fonction des noms des attributs
          */
-        List<String> tabValeurAtt1 = getValeursByNomAttribut(att1);
-        List<String> tabValeurAtt2 = getValeursByNomAttribut(att2);
-        List<String> tabValeurAtt3 = getValeursByNomAttribut(att3);
-        List<String> tabValeurAtt4 = getValeursByNomAttribut(att4);
+        List<String> tabValeurAtt1 = Data.getTableauValeursByNomAttribut(att1);
+        List<String> tabValeurAtt2 = Data.getTableauValeursByNomAttribut(att2);
+        List<String> tabValeurAtt3 = Data.getTableauValeursByNomAttribut(att3);
+        List<String> tabValeurAtt4 = Data.getTableauValeursByNomAttribut(att4);
 
 
         this.entetes = new ArrayList<EnteteTableau>();
@@ -85,7 +85,6 @@ public class Plateau extends ViewGroup {
             default: return null;
         }
     }
-
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

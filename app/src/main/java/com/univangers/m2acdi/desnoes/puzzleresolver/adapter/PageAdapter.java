@@ -11,13 +11,16 @@ import com.univangers.m2acdi.desnoes.puzzleresolver.ResultatFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
+    private int nbOnglets;
+
     public PageAdapter(FragmentManager mgr) {
         super(mgr);
+        this.nbOnglets = 3;
     }
 
     @Override
     public int getCount() {
-        return(3);
+        return(this.nbOnglets);
     }
 
     @Override
@@ -28,7 +31,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 1:
                 return IndiceFragment.newInstance(Data.TAB_INDICE_PUZZLE2);
             case 2:
-                return ResultatFragment.newInstance();
+                return ResultatFragment.newInstance(Data.TAB_RESULTAT_PUZZLE2);
             default:
                 return null;
         }
