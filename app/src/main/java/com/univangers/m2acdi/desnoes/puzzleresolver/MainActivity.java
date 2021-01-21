@@ -1,16 +1,12 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+
+import com.univangers.m2acdi.desnoes.puzzleresolver.puzzle3.Puzzle3Activity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openActivityPuzzle3(View v) {
-        //Intent ActivityPuzzle3 = new Intent(this, ???????????.class);
-        //startActivity(ActivityPuzzle3);
+        Intent ActivityPuzzle3 = new Intent(this, Puzzle3Activity.class);
+        startActivity(ActivityPuzzle3);
     }
 }
