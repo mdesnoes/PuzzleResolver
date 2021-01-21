@@ -72,19 +72,6 @@ public class Plateau extends ViewGroup {
         this.grilles.forEach(grille -> addView(grille));
     }
 
-    private List<String> getValeursByNomAttribut(String att1) {
-        switch(att1) {
-            case "film": return Data.TAB_FILM;
-            case "jour": return Data.TAB_JOUR;
-            case "temps": return Data.TAB_TEMPS;
-            case "nom": return  Data.TAB_NOM;
-            case "processeur": return Data.TAB_PROCESSEUR;
-            case "disqueDur": return Data.TAB_DISQUEDUR;
-            case "prix": return Data.TAB_PRIX;
-            case "ecran": return  Data.TAB_ECRAN;
-            default: return null;
-        }
-    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

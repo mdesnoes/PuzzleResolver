@@ -29,7 +29,7 @@ public class PageAdapterForPuzzle3 extends FragmentPagerAdapter {
             case 1:
                 return IndiceFragment.newInstance(Data.TAB_INDICE_PUZZLE3);
             case 2:
-                return ResultatFragment.newInstance();
+                return ResultatFragment.newInstance(Data.TAB_RESULTAT_PUZZLE3);
             default:
                 return null;
         }

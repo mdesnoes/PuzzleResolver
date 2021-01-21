@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 
 import java.util.List;
@@ -45,8 +46,8 @@ public class EnteteTableauForPuzzle3 extends View {
         int width = metrics.widthPixels;
         int height =  metrics.heightPixels;
 
-        int currentWidth =  (MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.UNSPECIFIED)  ? MeasureSpec.getSize(widthMeasureSpec) : width/2;
-        int currentHeight = (MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.UNSPECIFIED) ? MeasureSpec.getSize(heightMeasureSpec): height/2;
+        int currentWidth =  (View.MeasureSpec.getMode(widthMeasureSpec) != View.MeasureSpec.UNSPECIFIED)  ? View.MeasureSpec.getSize(widthMeasureSpec) : width/2;
+        int currentHeight = (View.MeasureSpec.getMode(widthMeasureSpec) != View.MeasureSpec.UNSPECIFIED) ? View.MeasureSpec.getSize(heightMeasureSpec): height/2;
 
         setMeasuredDimension(currentWidth,currentHeight);
     }
@@ -57,6 +58,7 @@ public class EnteteTableauForPuzzle3 extends View {
         float height = getHeight();
 
         float step = width/5;
+
 
         for (int i = 0, x = 0; i < this.valeurs.size(); i++, x += step) {
             if(isVertical) {

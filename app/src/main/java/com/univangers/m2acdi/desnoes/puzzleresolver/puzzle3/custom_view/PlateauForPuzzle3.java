@@ -40,10 +40,10 @@ public class PlateauForPuzzle3 extends ViewGroup {
         /**
          * On recupère un tableau des données en fonction des noms des attributs
          */
-        List<String> tabValeurAtt1 = getValeursByNomAttribut(att1);
-        List<String> tabValeurAtt2 = getValeursByNomAttribut(att2);
-        List<String> tabValeurAtt3 = getValeursByNomAttribut(att3);
-        List<String> tabValeurAtt4 = getValeursByNomAttribut(att4);
+        List<String> tabValeurAtt1 = Data.getTableauValeursByNomAttribut(att1);
+        List<String> tabValeurAtt2 = Data.getTableauValeursByNomAttribut(att2);
+        List<String> tabValeurAtt3 = Data.getTableauValeursByNomAttribut(att3);
+        List<String> tabValeurAtt4 = Data.getTableauValeursByNomAttribut(att4);
 
 
         this.entetes = new ArrayList<EnteteTableauForPuzzle3>();
@@ -70,20 +70,6 @@ public class PlateauForPuzzle3 extends ViewGroup {
          */
         this.entetes.forEach(enteteTableauForPuzzle3 -> addView(enteteTableauForPuzzle3));
         this.grilleForPuzzle3s.forEach(grilleForPuzzle3 -> addView(grilleForPuzzle3));
-    }
-
-    private List<String> getValeursByNomAttribut(String att1) {
-        switch(att1) {
-            case "film": return Data.TAB_FILM;
-            case "jour": return Data.TAB_JOUR;
-            case "temps": return Data.TAB_TEMPS;
-            case "nom": return  Data.TAB_NOM;
-            case "processeur": return Data.TAB_PROCESSEUR;
-            case "disqueDur": return Data.TAB_DISQUEDUR;
-            case "prix": return Data.TAB_PRIX;
-            case "ecran": return  Data.TAB_ECRAN;
-            default: return null;
-        }
     }
 
 

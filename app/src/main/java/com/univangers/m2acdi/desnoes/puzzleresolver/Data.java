@@ -20,6 +20,7 @@ public final class Data {
             "5. Mark, whose choice was Scarecrow, had a showing at a time of one hour and five minutes after that of Scarface.",
             "6. Neither Miss Farmer nor Miss Peters had a showing on an even-numbered day",
             "7. 88 Minutes showed at a time both 40 minutes to the hour and 40 minutes after the Thursday showing."));
+    public final static List<String> TAB_RESULTAT_PUZZLE2 = new ArrayList<String>(Arrays.asList("Nom", "Film", "Jour", "Temps"));
 
 
     // Données pour le Puzzle 3
@@ -33,7 +34,7 @@ public final class Data {
             "2. The five computers aren: the one chosen by Andrew (which doesn't have the 27' screen), the one which has the 2.0-MHz processor, the computer that has a 250 GB HD, the one which has a price of 1,149 Euros and the computer (which doesn't have the 15' screen) that has the HD bigger than the one chosen by Andrew but smaller than that the one which has the 2.7 MHz processor.",
             "3. The computer with the 320 Gb HD has either the 2.0 or the 2.3 MHz processor.The processor of the computer which has the 15' screen is more powerful than the one in the computer that costs 999 euros but less powerful than the processor that is included in the 1,349 Euros computer.",
             "4. The computer that has the 27' screen doesn't have the 320 Gb hard drive. The 500 GB HD is included in the computer that has a more powerful professor and a larger size screen than the one which costs 699 euros (which doesn't include the 320 Gb HD)."));
-    public final static List<String> TAB_RESULTAT_PUZZLE2 = new ArrayList<String>(Arrays.asList("Nom", "Film", "Jour", "Temps"));
+    public final static List<String> TAB_RESULTAT_PUZZLE3 = new ArrayList<String>(Arrays.asList("Ecran", "Proc.", " DD ", "Prix"));
 
 
     public static final List<String> getTableauValeursByNomAttribut(String att) {
@@ -42,6 +43,10 @@ public final class Data {
             case "JOUR": return TAB_JOUR;
             case "TEMPS": return TAB_TEMPS;
             case "NOM": return  TAB_NOM;
+            case "PROCESSEUR": return TAB_PROCESSEUR;
+            case "DISQUEDUR": return TAB_DISQUEDUR;
+            case "PRIX": return TAB_PRIX;
+            case "ECRAN": return  TAB_ECRAN;
             default: return null;
         }
     }
