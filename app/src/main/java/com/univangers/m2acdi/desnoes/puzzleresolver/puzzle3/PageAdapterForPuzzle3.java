@@ -1,4 +1,6 @@
-package com.univangers.m2acdi.desnoes.puzzleresolver.adapter;
+package com.univangers.m2acdi.desnoes.puzzleresolver.puzzle3;
+
+import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -6,12 +8,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
 import com.univangers.m2acdi.desnoes.puzzleresolver.IndiceFragment;
-import com.univangers.m2acdi.desnoes.puzzleresolver.PlateauFragment;
 import com.univangers.m2acdi.desnoes.puzzleresolver.ResultatFragment;
 
-public class PageAdapter extends FragmentPagerAdapter {
+public class PageAdapterForPuzzle3 extends FragmentPagerAdapter {
 
-    public PageAdapter(FragmentManager mgr) {
+    public PageAdapterForPuzzle3(FragmentManager mgr) {
         super(mgr);
     }
 
@@ -24,9 +25,9 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return PlateauFragment.newInstance();
+                return PlateauFragmentForPuzzle3.newInstance();
             case 1:
-                return IndiceFragment.newInstance(Data.TAB_INDICE_PUZZLE2);
+                return IndiceFragment.newInstance(Data.TAB_INDICE_PUZZLE3);
             case 2:
                 return ResultatFragment.newInstance();
             default:

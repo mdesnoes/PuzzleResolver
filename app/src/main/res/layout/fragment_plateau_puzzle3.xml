@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.univangers.m2acdi.desnoes.puzzleresolver.puzzle3.custom_view.PlateauForPuzzle3
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:attribut1_pz3="processeur"
+        app:attribut2_pz3="disqueDur"
+        app:attribut3_pz3="prix"
+        app:attribut4_pz3="ecran"/>
+
+</LinearLayout>

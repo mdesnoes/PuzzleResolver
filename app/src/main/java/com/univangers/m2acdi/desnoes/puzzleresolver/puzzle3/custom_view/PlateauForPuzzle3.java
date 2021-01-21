@@ -1,4 +1,4 @@
-package com.univangers.m2acdi.desnoes.puzzleresolver.custom_view;
+package com.univangers.m2acdi.desnoes.puzzleresolver.puzzle3.custom_view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,26 +15,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Plateau extends ViewGroup {
+public class PlateauForPuzzle3 extends ViewGroup {
 
-    private List<EnteteTableau> entetes;
-    private List<Grille> grilles;
+    private List<EnteteTableauForPuzzle3> entetes;
+    private List<GrilleForPuzzle3> grilleForPuzzle3s;
 
     private float touchEventX;
     private float touchEventY;
 
-    public Plateau(Context context) {
+    public PlateauForPuzzle3(Context context) {
         super(context);
     }
 
-    public Plateau(Context context, AttributeSet attrs) {
+    public PlateauForPuzzle3(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray attr_array = context.obtainStyledAttributes(attrs, R.styleable.Plateau);
-        String att1 = attr_array.getString(R.styleable.Plateau_attribut1);
-        String att2 = attr_array.getString(R.styleable.Plateau_attribut2);
-        String att3 = attr_array.getString(R.styleable.Plateau_attribut3);
-        String att4 = attr_array.getString(R.styleable.Plateau_attribut4);
+        TypedArray attr_array = context.obtainStyledAttributes(attrs, R.styleable.PlateauForPuzzle3);
+        String att1 = attr_array.getString(R.styleable.PlateauForPuzzle3_attribut1_pz3);
+        String att2 = attr_array.getString(R.styleable.PlateauForPuzzle3_attribut2_pz3);
+        String att3 = attr_array.getString(R.styleable.PlateauForPuzzle3_attribut3_pz3);
+        String att4 = attr_array.getString(R.styleable.PlateauForPuzzle3_attribut4_pz3);
 
 
         /**
@@ -46,30 +46,30 @@ public class Plateau extends ViewGroup {
         List<String> tabValeurAtt4 = getValeursByNomAttribut(att4);
 
 
-        this.entetes = new ArrayList<EnteteTableau>();
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt1, true));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt2, true));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt3, true));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt4, false));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt3, false));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt2, false));
+        this.entetes = new ArrayList<EnteteTableauForPuzzle3>();
+        this.entetes.add(new EnteteTableauForPuzzle3(getContext(), tabValeurAtt1, true));
+        this.entetes.add(new EnteteTableauForPuzzle3(getContext(), tabValeurAtt2, true));
+        this.entetes.add(new EnteteTableauForPuzzle3(getContext(), tabValeurAtt3, true));
+        this.entetes.add(new EnteteTableauForPuzzle3(getContext(), tabValeurAtt4, false));
+        this.entetes.add(new EnteteTableauForPuzzle3(getContext(), tabValeurAtt3, false));
+        this.entetes.add(new EnteteTableauForPuzzle3(getContext(), tabValeurAtt2, false));
 
 
 
-        this.grilles = new ArrayList<Grille>();
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt1));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt2));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt3));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt3, tabValeurAtt1));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt3, tabValeurAtt2));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt2, tabValeurAtt1));
+        this.grilleForPuzzle3s = new ArrayList<GrilleForPuzzle3>();
+        this.grilleForPuzzle3s.add(new GrilleForPuzzle3(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt1));
+        this.grilleForPuzzle3s.add(new GrilleForPuzzle3(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt2));
+        this.grilleForPuzzle3s.add(new GrilleForPuzzle3(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt3));
+        this.grilleForPuzzle3s.add(new GrilleForPuzzle3(getContext(), 5, 5, tabValeurAtt3, tabValeurAtt1));
+        this.grilleForPuzzle3s.add(new GrilleForPuzzle3(getContext(), 5, 5, tabValeurAtt3, tabValeurAtt2));
+        this.grilleForPuzzle3s.add(new GrilleForPuzzle3(getContext(), 5, 5, tabValeurAtt2, tabValeurAtt1));
 
 
         /*
          * Les addView()
          */
-        this.entetes.forEach(enteteTableau -> addView(enteteTableau));
-        this.grilles.forEach(grille -> addView(grille));
+        this.entetes.forEach(enteteTableauForPuzzle3 -> addView(enteteTableauForPuzzle3));
+        this.grilleForPuzzle3s.forEach(grilleForPuzzle3 -> addView(grilleForPuzzle3));
     }
 
     private List<String> getValeursByNomAttribut(String att1) {
@@ -113,15 +113,15 @@ public class Plateau extends ViewGroup {
         // Deuxième ligne du plateau : L'entête avec l'attribut 4 (horizontal) suvis de 3 grilles
         this.entetes.get(3).layout(0, currentHeight, step, currentHeight+step);
         for (int i= 0, s = step; i < 3; i++, s += step ) {
-            this.grilles.get(i).setPosX(s);
-            this.grilles.get(i).setPosY(currentHeight);
-            this.grilles.get(i).layout(s, currentHeight,s + step, currentHeight + step);
+            this.grilleForPuzzle3s.get(i).setPosX(s);
+            this.grilleForPuzzle3s.get(i).setPosY(currentHeight);
+            this.grilleForPuzzle3s.get(i).layout(s, currentHeight,s + step, currentHeight + step);
 
             // Recherche si la cellule sur laquelle on a cliqué est ici
-            for(Cellule cell : this.grilles.get(i).getCellules()) {
+            for(CelluleForPuzzle3 cell : this.grilleForPuzzle3s.get(i).getCelluleForPuzzle3s()) {
                 if(coordonneeAppartientCellule(this.touchEventX, this.touchEventY, cell)) {
                     cell.changeColor();
-                    this.grilles.get(i).invalidate();
+                    this.grilleForPuzzle3s.get(i).invalidate();
                 }
             }
         }
@@ -131,15 +131,15 @@ public class Plateau extends ViewGroup {
         // Troisième ligne du plateau : L'entète avec l'attribut 3 (horizontal) suvis de 2 grilles
         this.entetes.get(4).layout(0, currentHeight, step, currentHeight + step);
         for (int i= 3, s = step; i < 5; i++, s += step ) {
-            this.grilles.get(i).setPosX(s);
-            this.grilles.get(i).setPosY(currentHeight);
-            this.grilles.get(i).layout(s, currentHeight,s + step, currentHeight + step);
+            this.grilleForPuzzle3s.get(i).setPosX(s);
+            this.grilleForPuzzle3s.get(i).setPosY(currentHeight);
+            this.grilleForPuzzle3s.get(i).layout(s, currentHeight,s + step, currentHeight + step);
 
             // Recherche si la cellule sur laquelle on a cliqué est ici
-            for(Cellule cell : this.grilles.get(i).getCellules()) {
+            for(CelluleForPuzzle3 cell : this.grilleForPuzzle3s.get(i).getCelluleForPuzzle3s()) {
                 if(coordonneeAppartientCellule(this.touchEventX, this.touchEventY, cell)) {
                     cell.changeColor();
-                    this.grilles.get(i).invalidate();
+                    this.grilleForPuzzle3s.get(i).invalidate();
                 }
             }
         }
@@ -149,14 +149,14 @@ public class Plateau extends ViewGroup {
         // Dernière ligne du plateau : L'entète avec l'attribut 2 (horizontal) suvis de 1 grille
         this.entetes.get(5).layout(0, currentHeight, step, currentHeight + step);
 
-        this.grilles.get(5).setPosX(step);
-        this.grilles.get(5).setPosY(currentHeight);
-        this.grilles.get(5).layout(step, currentHeight,step*2, currentHeight + step);
+        this.grilleForPuzzle3s.get(5).setPosX(step);
+        this.grilleForPuzzle3s.get(5).setPosY(currentHeight);
+        this.grilleForPuzzle3s.get(5).layout(step, currentHeight,step*2, currentHeight + step);
         // Recherche si la cellule sur laquelle on a cliqué est ici
-        for(Cellule cell : this.grilles.get(5).getCellules()) {
+        for(CelluleForPuzzle3 cell : this.grilleForPuzzle3s.get(5).getCelluleForPuzzle3s()) {
             if(coordonneeAppartientCellule(this.touchEventX, this.touchEventY, cell)) {
                 cell.changeColor();
-                this.grilles.get(5).invalidate();
+                this.grilleForPuzzle3s.get(5).invalidate();
             }
         }
     }
@@ -175,7 +175,7 @@ public class Plateau extends ViewGroup {
     }
 
 
-    public boolean coordonneeAppartientCellule(float x, float y, Cellule cell) {
+    public boolean coordonneeAppartientCellule(float x, float y, CelluleForPuzzle3 cell) {
         //Log.i("TAG", "Left : " + cell.getLeft() + " - Right : " + cell.getRight() + " - Top : " + cell.getTop() + " - Bottom : " + cell.getBottom());
         return (x >= cell.getLeft() && x < cell.getRight()) && (y >= cell.getTop() && y < cell.getBottom());
     }

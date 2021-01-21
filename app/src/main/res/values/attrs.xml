@@ -6,4 +6,10 @@
         <attr name="attribut3" format="string"/>
         <attr name="attribut4" format="string"/>
     </declare-styleable>
+    <declare-styleable name="PlateauForPuzzle3">
+        <attr name="attribut1_pz3" format="string"/>
+        <attr name="attribut2_pz3" format="string"/>
+        <attr name="attribut3_pz3" format="string"/>
+        <attr name="attribut4_pz3" format="string"/>
+    </declare-styleable>
 </resources>
