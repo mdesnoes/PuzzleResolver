@@ -152,7 +152,7 @@ public class Plateau extends ViewGroup {
         touchEventX = event.getX();
         touchEventY = event.getY();
         try {
-            Thread.sleep(120);
+            Thread.sleep(150);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

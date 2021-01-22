@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.univangers.m2acdi.desnoes.puzzleresolver.puzzle3.Puzzle3Activity;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override

@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <com.univangers.m2acdi.desnoes.puzzleresolver.custom_view.Plateau
+        android:id="@+id/plateau_puzzle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:attribut1="film"

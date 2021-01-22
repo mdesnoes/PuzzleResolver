@@ -1,13 +1,12 @@
-package com.univangers.m2acdi.desnoes.puzzleresolver.puzzle3;
+package com.univangers.m2acdi.desnoes.puzzleresolver;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.univangers.m2acdi.desnoes.puzzleresolver.R;
+import com.univangers.m2acdi.desnoes.puzzleresolver.adapter.PageAdapter;
 
 public class Puzzle3Activity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class Puzzle3Activity extends AppCompatActivity {
 
     private void configureViewPagerAndTabs(){
         ViewPager pager = (ViewPager)findViewById(R.id.activity_main_viewpager);
-        pager.setAdapter(new PageAdapterForPuzzle3(getSupportFragmentManager()));
+        pager.setAdapter(new PageAdapter(getSupportFragmentManager(), 3));
 
         TabLayout tabs= (TabLayout)findViewById(R.id.activity_main_tabs);
         tabs.setupWithViewPager(pager);

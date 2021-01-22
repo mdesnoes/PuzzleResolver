@@ -27,9 +27,9 @@ public class Cellule {
 
     public void changeColor() {
         if(this.color == ColorCellule.WHITE) {
-            this.color = ColorCellule.GREEN;
-        } else if(this.color == ColorCellule.GREEN) {
             this.color = ColorCellule.RED;
+        } else if(this.color == ColorCellule.RED) {
+            this.color = ColorCellule.GREEN;
         } else {
             this.color = ColorCellule.WHITE;
         }

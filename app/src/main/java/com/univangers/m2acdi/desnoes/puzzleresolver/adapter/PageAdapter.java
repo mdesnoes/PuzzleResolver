@@ -5,17 +5,40 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
-import com.univangers.m2acdi.desnoes.puzzleresolver.IndiceFragment;
-import com.univangers.m2acdi.desnoes.puzzleresolver.PlateauFragment;
-import com.univangers.m2acdi.desnoes.puzzleresolver.ResultatFragment;
+import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.IndiceFragment;
+import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.PlateauFragment;
+import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.ResultatFragment;
+
+import java.util.List;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
     private int nbOnglets;
 
-    public PageAdapter(FragmentManager mgr) {
+    private int numPuzzle;
+
+    private List<String> tableauIndice;
+    private List<String> tableauResultat;
+
+    public PageAdapter(FragmentManager mgr, int numPuzzle) {
         super(mgr);
         this.nbOnglets = 3;
+        this.numPuzzle = numPuzzle;
+
+        switch (this.numPuzzle) {
+            case 1:
+                this.tableauIndice = null;
+                this.tableauResultat = null;
+                break;
+            case 2:
+                this.tableauIndice = Data.TAB_INDICE_PUZZLE2;
+                this.tableauResultat = Data.TAB_RESULTAT_PUZZLE2;
+                break;
+            case 3:
+                this.tableauIndice = Data.TAB_INDICE_PUZZLE3;
+                this.tableauResultat = Data.TAB_RESULTAT_PUZZLE3;
+                break;
+        }
     }
 
     @Override
@@ -27,11 +50,11 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return PlateauFragment.newInstance();
+                return PlateauFragment.newInstance(this.numPuzzle);
             case 1:
-                return IndiceFragment.newInstance(Data.TAB_INDICE_PUZZLE2);
+                return IndiceFragment.newInstance(this.tableauIndice);
             case 2:
-                return ResultatFragment.newInstance(Data.TAB_RESULTAT_PUZZLE2);
+                return ResultatFragment.newInstance(this.tableauResultat);
             default:
                 return null;
         }

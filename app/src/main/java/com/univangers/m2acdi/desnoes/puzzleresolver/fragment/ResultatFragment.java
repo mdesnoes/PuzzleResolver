@@ -1,27 +1,21 @@
-package com.univangers.m2acdi.desnoes.puzzleresolver;
+package com.univangers.m2acdi.desnoes.puzzleresolver.fragment;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import org.w3c.dom.Text;
+import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
+import com.univangers.m2acdi.desnoes.puzzleresolver.R;
 
 import java.util.List;
-
-import static com.univangers.m2acdi.desnoes.puzzleresolver.Data.TAB_FILM;
-import static com.univangers.m2acdi.desnoes.puzzleresolver.Data.TAB_JOUR;
-import static com.univangers.m2acdi.desnoes.puzzleresolver.Data.TAB_NOM;
-import static com.univangers.m2acdi.desnoes.puzzleresolver.Data.TAB_TEMPS;
 
 public class ResultatFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.univangers.m2acdi.desnoes.puzzleresolver;
+package com.univangers.m2acdi.desnoes.puzzleresolver.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.univangers.m2acdi.desnoes.puzzleresolver.R;
 import com.univangers.m2acdi.desnoes.puzzleresolver.adapter.IndiceAdapter;
 
 import java.util.List;

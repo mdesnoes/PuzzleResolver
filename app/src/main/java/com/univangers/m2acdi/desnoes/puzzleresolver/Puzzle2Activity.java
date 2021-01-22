@@ -23,7 +23,7 @@ public class Puzzle2Activity extends AppCompatActivity {
 
     private void configureViewPagerAndTabs(){
         ViewPager pager = (ViewPager)findViewById(R.id.activity_main_viewpager);
-        pager.setAdapter(new PageAdapter(getSupportFragmentManager()));
+        pager.setAdapter(new PageAdapter(getSupportFragmentManager(), 2));
 
         TabLayout tabs= (TabLayout)findViewById(R.id.activity_main_tabs);
         tabs.setupWithViewPager(pager);
