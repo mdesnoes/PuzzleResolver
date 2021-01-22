@@ -5,16 +5,19 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 
-import com.univangers.m2acdi.desnoes.puzzleresolver.ColorCellule;
+import com.univangers.m2acdi.desnoes.puzzleresolver.EtatCellule;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Grille extends View {
+
+    private final static String TEXT_CELL_VALIDE = "O";
+    private final static String TEXT_CELL_INVALIDE = "X";
+
 
     private Integer nbLignes;
     private Integer nbColonnes;
@@ -23,6 +26,7 @@ public class Grille extends View {
     private Paint paintCellule;
 
     private List<Cellule> cellules = new ArrayList<>();
+    private List<Cellule> cellulesValidees = new ArrayList<>();
 
     private List<String> tabAttributsLigne;
     private List<String> tabAttributsColonne;
@@ -50,6 +54,8 @@ public class Grille extends View {
 
         paintText = new Paint();
         paintText.setColor(Color.BLACK);
+        paintText.setTextSize(80);
+        paintText.setFakeBoldText(true);
     }
 
     @Override
@@ -75,27 +81,21 @@ public class Grille extends View {
         for (int i = 0, x = 0; i < nbLignes; i++, x += stepLigne) {
             for (int j = 0, y = 0; j < nbColonnes; j++, y += stepColonne) {
                 Cellule cell = null;
-                /*
-                 * On vérifie la si la cellule a déjà été crée auparavant
-                 */
                 if (!cellules.isEmpty()) {
                     cell = getCelluleByCoord(this.posX + x, this.posY + y, this.posX + x + stepLigne, this.posY + y + stepColonne);
                 }
 
                 /*
-                 * Si la cellule existe, on lui assigne sa couleur
+                 * Si la cellule existe, on lui assigne son texte
                  * Si elle n'existe pas, on la crée
                  */
                 if (cell != null) {
-                    if (cell.getColor() == ColorCellule.GREEN) {
-                        this.paintCellule.setColor(Color.GREEN);
-                        this.paintCellule.setStyle(Paint.Style.FILL);
-                    } else if (cell.getColor() == ColorCellule.RED) {
-                        this.paintCellule.setColor(Color.RED);
-                        this.paintCellule.setStyle(Paint.Style.FILL);
-                    } else {
-                        this.paintCellule.setColor(Color.BLACK);
-                        paintCellule.setStyle(Paint.Style.STROKE);
+                    if (cell.getEtat() == EtatCellule.VALIDE) {
+                        this.paintText.setColor(Color.GREEN);
+                        canvas.drawText(TEXT_CELL_VALIDE, x + 10, y + stepColonne - 5, this.paintText);
+                    } else if (cell.getEtat() == EtatCellule.INVALIDE) {
+                        this.paintText.setColor(Color.RED);
+                        canvas.drawText(TEXT_CELL_INVALIDE, x + 10, y + stepColonne - 5, this.paintText);
                     }
                 } else {
                     String valLigne = tabAttributsLigne.get(i);
@@ -118,6 +118,59 @@ public class Grille extends View {
         return null;
     }
 
+    /**
+     * Retourne vrai si la cellule en paramètre est sur la ligne ou la colonne d'une cellule validée
+     * @param cell
+     * @return
+     */
+    public boolean verificationCelluleDejaValidee(Cellule cell) {
+        for(Cellule cellVal : this.cellulesValidees) {
+            if(cellVal.getValLigne().equals(cell.getValLigne()) || cellVal.getValColonne().equals(cell.getValColonne())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Permet de mettre à jour les couleurs des cellules sur la ligne et la colonne de la celulle courante
+     * @param currentCell
+     * @param nextEtat
+     */
+    public void changeEtatOthersCellules(Cellule currentCell, EtatCellule nextEtat) {
+        String valColonneCurrentCell = currentCell.getValColonne();
+        String valLigneCurrentCell = currentCell.getValLigne();
+
+        for(Cellule cell : this.cellules) {
+            // On cherche les cellules qui sont sur la même ligne ou la même colonne
+            if(cell.getValColonne().equals(valColonneCurrentCell) || cell.getValLigne().equals(valLigneCurrentCell)) {
+                // On verifie qu ce n'est pas la même cellule que la celulle courante
+                if(!(cell.getValColonne().equals(valColonneCurrentCell) && cell.getValLigne().equals(valLigneCurrentCell))) {
+
+                    if(this.cellulesValidees.isEmpty()) {
+                        cell.setEtat(nextEtat);
+                    } else {
+                        // On change l'etat de la cellule si elle n'entre pas en conflit avec les lignes/colonnes des autres celulles validées
+                        for (Cellule cellValidee : this.cellulesValidees) {
+                            if (!cellValidee.getValLigne().equals(cell.getValLigne()) && !cellValidee.getValColonne().equals(cell.getValColonne())) {
+                                cell.setEtat(nextEtat);
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+
+    public void addCelluleValidee(Cellule cell) {
+        this.cellulesValidees.add(cell);
+    }
+
+    public void removeCelluleInvalidee(Cellule cell) {
+        this.cellulesValidees.remove(cell);
+    }
 
     public void setPosX(int posX) {
         this.posX = posX;
@@ -130,4 +183,5 @@ public class Grille extends View {
     public List<Cellule> getCellules() {
         return cellules;
     }
+
 }

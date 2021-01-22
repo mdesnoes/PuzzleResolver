@@ -1,10 +1,10 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver.custom_view;
 
-import com.univangers.m2acdi.desnoes.puzzleresolver.ColorCellule;
+import com.univangers.m2acdi.desnoes.puzzleresolver.EtatCellule;
 
 public class Cellule {
 
-    private ColorCellule color;
+    private EtatCellule etat;
 
     private String valLigne;
     private String valColonne;
@@ -22,21 +22,15 @@ public class Cellule {
         this.bottom = bottom;
         this.valLigne = valLigne;
         this.valColonne = valColonne;
-        this.color = ColorCellule.WHITE;
+        this.etat = EtatCellule.VIDE;
     }
 
-    public void changeColor() {
-        if(this.color == ColorCellule.WHITE) {
-            this.color = ColorCellule.RED;
-        } else if(this.color == ColorCellule.RED) {
-            this.color = ColorCellule.GREEN;
-        } else {
-            this.color = ColorCellule.WHITE;
-        }
+    public EtatCellule getEtat() {
+        return etat;
     }
 
-    public ColorCellule getColor() {
-        return color;
+    public void setEtat(EtatCellule etat) {
+        this.etat = etat;
     }
 
     public float getLeft() {

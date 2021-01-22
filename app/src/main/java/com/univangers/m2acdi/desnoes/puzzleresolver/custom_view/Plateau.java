@@ -3,11 +3,11 @@ package com.univangers.m2acdi.desnoes.puzzleresolver.custom_view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.univangers.m2acdi.desnoes.puzzleresolver.EtatCellule;
 import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
 import com.univangers.m2acdi.desnoes.puzzleresolver.R;
 
@@ -106,8 +106,7 @@ public class Plateau extends ViewGroup {
             // Recherche si la cellule sur laquelle on a cliqué est ici
             for(Cellule cell : this.grilles.get(i).getCellules()) {
                 if(coordonneeAppartientCellule(this.touchEventX, this.touchEventY, cell)) {
-                    cell.changeColor();
-                    this.grilles.get(i).invalidate();
+                    actionCelluleCourante(this.grilles.get(i), cell);
                 }
             }
         }
@@ -124,8 +123,7 @@ public class Plateau extends ViewGroup {
             // Recherche si la cellule sur laquelle on a cliqué est ici
             for(Cellule cell : this.grilles.get(i).getCellules()) {
                 if(coordonneeAppartientCellule(this.touchEventX, this.touchEventY, cell)) {
-                    cell.changeColor();
-                    this.grilles.get(i).invalidate();
+                    actionCelluleCourante(this.grilles.get(i), cell);
                 }
             }
         }
@@ -141,8 +139,7 @@ public class Plateau extends ViewGroup {
         // Recherche si la cellule sur laquelle on a cliqué est ici
         for(Cellule cell : this.grilles.get(5).getCellules()) {
             if(coordonneeAppartientCellule(this.touchEventX, this.touchEventY, cell)) {
-                cell.changeColor();
-                this.grilles.get(5).invalidate();
+                actionCelluleCourante(this.grilles.get(5), cell);
             }
         }
     }
@@ -158,6 +155,32 @@ public class Plateau extends ViewGroup {
         }
         requestLayout();
         return true;
+    }
+
+    /**
+     * Permet de changer l'etat de la cellule courante (sur laquelle on a cliqué) et de faire les action nécéssaires.
+     * @param grille
+     * @param cell
+     */
+    private void actionCelluleCourante(Grille grille, Cellule cell) {
+        // Si l"etat est VIDE, le nouvel etat est INVALIDE
+        if(cell.getEtat() == EtatCellule.VIDE) {
+            cell.setEtat(EtatCellule.INVALIDE);
+        } else if(cell.getEtat() == EtatCellule.INVALIDE) { // Si l"etat est INVALIDE, le nouvel etat est VALIDE si c'est possible
+
+            // On verifie que la cellule n'est pas sur une ligne avec une cellule validée
+            if (!grille.verificationCelluleDejaValidee(cell)) {
+                cell.setEtat(EtatCellule.VALIDE);
+                grille.changeEtatOthersCellules(cell, EtatCellule.INVALIDE); // Maj des cellules qui sont sur la même ligne et colonne
+                grille.addCelluleValidee(cell);
+            }
+
+        } else if(cell.getEtat() == EtatCellule.VALIDE) { // Si l"etat est VALIDE, le nouvel etat est VIDE
+            cell.setEtat(EtatCellule.VIDE);
+            grille.removeCelluleInvalidee(cell);
+            grille.changeEtatOthersCellules(cell, EtatCellule.VIDE);  // Maj des cellules qui sont sur la même ligne et colonne
+        }
+        grille.invalidate();
     }
 
 
