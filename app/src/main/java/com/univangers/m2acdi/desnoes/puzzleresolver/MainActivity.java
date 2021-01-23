@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openActivityPuzzle1(View v) {
-        //Intent ActivityPuzzle1 = new Intent(this, ???????????.class);
-        //startActivity(ActivityPuzzle1);
+        Intent ActivityPuzzle1 = new Intent(this, ActivityPastaWine.class);
+        startActivity(ActivityPuzzle1);
     }
 
     public void openActivityPuzzle2(View v) {
