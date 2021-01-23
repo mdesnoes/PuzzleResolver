@@ -1,5 +1,7 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver.adapter;
 
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -20,6 +22,8 @@ public class PageAdapter extends FragmentPagerAdapter {
     private List<String> tableauIndice;
     private List<String> tableauResultat;
 
+    private View fragmentView;
+
     public PageAdapter(FragmentManager mgr, int numPuzzle) {
         super(mgr);
         this.nbOnglets = 3;
@@ -27,8 +31,8 @@ public class PageAdapter extends FragmentPagerAdapter {
 
         switch (this.numPuzzle) {
             case 1:
-                this.tableauIndice = null;
-                this.tableauResultat = null;
+                this.nbOnglets = 2;
+                this.tableauIndice = Data.TAB_INDICE_PUZZLE1;;
                 break;
             case 2:
                 this.tableauIndice = Data.TAB_INDICE_PUZZLE2;
@@ -72,5 +76,13 @@ public class PageAdapter extends FragmentPagerAdapter {
             default:
                 return null;
         }
+    }
+
+    public View getFragmentView() {
+        return fragmentView;
+    }
+
+    public void setFragmentView(View fragmentView) {
+        this.fragmentView = fragmentView;
     }
 }
