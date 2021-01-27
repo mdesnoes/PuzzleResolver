@@ -8,8 +8,8 @@
     <com.univangers.m2acdi.desnoes.puzzleresolver.custom_view.Plateau
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:attribut1="processeur"
-        app:attribut2="disqueDur"
+        app:attribut1="proc."
+        app:attribut2="dd"
         app:attribut3="prix"
         app:attribut4="ecran"/>
 

@@ -22,7 +22,6 @@ public class PageAdapter extends FragmentPagerAdapter {
     private List<String> tableauIndice;
     private List<String> tableauResultat;
 
-    private View fragmentView;
 
     public PageAdapter(FragmentManager mgr, int numPuzzle) {
         super(mgr);
@@ -58,7 +57,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 1:
                 return IndiceFragment.newInstance(this.tableauIndice);
             case 2:
-                return ResultatFragment.newInstance(this.tableauResultat);
+                return ResultatFragment.newInstance(this.tableauResultat, this.numPuzzle);
             default:
                 return null;
         }
@@ -76,13 +75,5 @@ public class PageAdapter extends FragmentPagerAdapter {
             default:
                 return null;
         }
-    }
-
-    public View getFragmentView() {
-        return fragmentView;
-    }
-
-    public void setFragmentView(View fragmentView) {
-        this.fragmentView = fragmentView;
     }
 }

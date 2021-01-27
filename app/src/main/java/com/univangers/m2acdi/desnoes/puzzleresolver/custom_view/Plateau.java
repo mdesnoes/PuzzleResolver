@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.univangers.m2acdi.desnoes.puzzleresolver.DataResultat;
 import com.univangers.m2acdi.desnoes.puzzleresolver.EtatCellule;
 import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
 import com.univangers.m2acdi.desnoes.puzzleresolver.R;
@@ -45,6 +46,7 @@ public class Plateau extends ViewGroup {
         List<String> tabValeurAtt3 = Data.getTableauValeursByNomAttribut(att3);
         List<String> tabValeurAtt4 = Data.getTableauValeursByNomAttribut(att4);
 
+        DataResultat.initResultatVide(tabValeurAtt4);
 
         this.entetes = new ArrayList<EnteteTableau>();
         this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt1, true));
@@ -57,12 +59,12 @@ public class Plateau extends ViewGroup {
 
 
         this.grilles = new ArrayList<Grille>();
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt1));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt2));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt3));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt3, tabValeurAtt1));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt3, tabValeurAtt2));
-        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt2, tabValeurAtt1));
+        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt1, att1));
+        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt2, att2));
+        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt4, tabValeurAtt3, att3));
+        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt3, tabValeurAtt1, ""));
+        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt3, tabValeurAtt2, ""));
+        this.grilles.add(new Grille(getContext(), 5, 5, tabValeurAtt2, tabValeurAtt1, ""));
 
 
         /*

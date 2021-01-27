@@ -5,8 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 
+import com.univangers.m2acdi.desnoes.puzzleresolver.DataResultat;
 import com.univangers.m2acdi.desnoes.puzzleresolver.EtatCellule;
 
 import java.util.ArrayList;
@@ -30,16 +32,18 @@ public class Grille extends View {
 
     private List<String> tabAttributsLigne;
     private List<String> tabAttributsColonne;
+    private String nomValColonne;
 
     private int posX;
     private int posY;
 
-    public Grille(Context context, int nbLignes, int nbColonnes, List<String> tabAttributsLigne, List<String> tabAttributsColonne) {
+    public Grille(Context context, int nbLignes, int nbColonnes, List<String> tabAttributsLigne, List<String> tabAttributsColonne, String nomValColonne) {
         super(context);
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
         this.tabAttributsLigne = tabAttributsLigne;
         this.tabAttributsColonne = tabAttributsColonne;
+        this.nomValColonne = nomValColonne; // Permet de mettre à jour le tableau des résultats, s'il est vide, c'est que cette grille n'est pas utilisé pour calculer les resultats
         setUpPaint(); // style rectangle avec bordure
     }
 
@@ -90,16 +94,24 @@ public class Grille extends View {
                  * Si elle n'existe pas, on la crée
                  */
                 if (cell != null) {
+                    //Log.i("TAG", cell.getValLigne() + " - " + cell.getValColonne());
+
                     if (cell.getEtat() == EtatCellule.VALIDE) {
+
                         this.paintText.setColor(Color.GREEN);
                         canvas.drawText(TEXT_CELL_VALIDE, x + 10, y + stepColonne - 5, this.paintText);
+
+                        // Mise à jour du tableau de resultat
+                        if(!this.nomValColonne.isEmpty()) {
+                            DataResultat.updateResultat(cell.getValLigne(), this.nomValColonne, cell.getValColonne());
+                        }
                     } else if (cell.getEtat() == EtatCellule.INVALIDE) {
                         this.paintText.setColor(Color.RED);
                         canvas.drawText(TEXT_CELL_INVALIDE, x + 10, y + stepColonne - 5, this.paintText);
                     }
                 } else {
-                    String valLigne = tabAttributsLigne.get(i);
-                    String valColonne = tabAttributsColonne.get(j);
+                    String valLigne = tabAttributsLigne.get(j);
+                    String valColonne = tabAttributsColonne.get(i);
 
                     this.cellules.add(new Cellule(this.posX + x, this.posY + y, this.posX + x + stepLigne, this.posY + y + stepColonne, valLigne, valColonne));
                 }
