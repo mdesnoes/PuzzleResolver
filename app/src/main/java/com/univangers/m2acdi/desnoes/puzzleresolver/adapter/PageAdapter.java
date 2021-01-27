@@ -21,6 +21,7 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     private List<String> tableauIndice;
     private List<String> tableauResultat;
+    private String textIntro;
 
 
     public PageAdapter(FragmentManager mgr, int numPuzzle) {
@@ -31,15 +32,18 @@ public class PageAdapter extends FragmentPagerAdapter {
         switch (this.numPuzzle) {
             case 1:
                 this.nbOnglets = 2;
-                this.tableauIndice = Data.TAB_INDICE_PUZZLE1;;
+                this.tableauIndice = Data.TAB_INDICE_PUZZLE1;
+                this.textIntro = Data.TEXT_INTRO_PUZZLE1;
                 break;
             case 2:
                 this.tableauIndice = Data.TAB_INDICE_PUZZLE2;
                 this.tableauResultat = Data.TAB_RESULTAT_PUZZLE2;
+                this.textIntro = Data.TEXT_INTRO_PUZZLE2;
                 break;
             case 3:
                 this.tableauIndice = Data.TAB_INDICE_PUZZLE3;
                 this.tableauResultat = Data.TAB_RESULTAT_PUZZLE3;
+                this.textIntro = Data.TEXT_INTRO_PUZZLE3;
                 break;
         }
     }
@@ -55,7 +59,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 0:
                 return PlateauFragment.newInstance(this.numPuzzle);
             case 1:
-                return IndiceFragment.newInstance(this.tableauIndice);
+                return IndiceFragment.newInstance(this.tableauIndice, this.textIntro);
             case 2:
                 return ResultatFragment.newInstance(this.tableauResultat, this.numPuzzle);
             default:

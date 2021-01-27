@@ -20,6 +20,7 @@ public class Puzzle3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puzzle3);
+        setTitle("A new Personal Computer");
 
         configureViewPagerAndTabs();
     }

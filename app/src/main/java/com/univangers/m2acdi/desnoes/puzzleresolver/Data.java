@@ -36,6 +36,8 @@ public final class Data {
             "The woman that likes Australian wines is somewhere between Victoria and the woman who likes wines from Bordeaux, in that order.",
             "The woman wearing the Yellow shirt is exactly to the left of the 35 years old woman."));
 
+    public final static String TEXT_INTRO_PUZZLE1 = "Five friends are side by side planning a dinner together. Each one enjoys different kinds of pasta and wines from different countries. Figure out which pasta Holly likes the most.";
+
     // Données pour le Puzzle 2
     public final static List<String> TAB_FILM = new ArrayList<String>(Arrays.asList("88 Minutes", "Donnie Brasco", "Scarecrow", "Scarface", "The recruit"));
     public final static List<String> TAB_JOUR = new ArrayList<String>(Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"));
@@ -52,6 +54,10 @@ public final class Data {
             "7. 88 Minutes showed at a time both 40 minutes to the hour and 40 minutes after the Thursday showing."));
     public final static List<String> TAB_RESULTAT_PUZZLE2 = new ArrayList<String>(Arrays.asList("Nom", "Film", "Jour", "Temps"));
 
+    public final static String TEXT_INTRO_PUZZLE2 = "A five-member panel, determined by a ballot of members of the local Movie Buffs Associated at the Annual General Meeting, select a series of movies, starring a particular actor/actress, to be shown in the Municipal Offices function room each evening from Monday to Friday. The panel of Sally Boyden, Mark Thomson, Jessica Farmer, Laurie Davison and Mary Peters were re-elected for 2015.\n" +
+            "\n" +
+            "Last week their choice actor/actress was Al Pacino, and the films chosen - one per member - were Scarface (1983), Scarecrow (1973), Donnie Brasco (1997), 88 Minutes (2007), and The Recruit (2003). The films chosen were not respective, and neither were they shown in that order, nor in the order in which they were released. Showing time differed each evening. From this information and the following clues, for each member, can you determine who chose which film, the day on which it was shown, and at what time?\"";
+
 
     // Données pour le Puzzle 3
     public final static List<String> TAB_PROCESSEUR = new ArrayList<String>(Arrays.asList("2.0 MHz", "2.3 MHz", "2.5 MHz", "2.7 MHz", "3.1 MHz"));
@@ -66,6 +72,7 @@ public final class Data {
             "4. The computer that has the 27' screen doesn't have the 320 Gb hard drive. The 500 GB HD is included in the computer that has a more powerful professor and a larger size screen than the one which costs 699 euros (which doesn't include the 320 Gb HD)."));
     public final static List<String> TAB_RESULTAT_PUZZLE3 = new ArrayList<String>(Arrays.asList("Ecran", "Proc.", "DD", "Prix"));
 
+    public final static String TEXT_INTRO_PUZZLE3 = "Andrew has just bought one of these five different models of computers. Each computer has a different screen size, processor power, hard drive capacity and price. With the help of the clues, could you figure out which computer has been chosen by Andrew?";
 
 
     public static final List<String> getTableauValeursByNomAttribut(String att) {

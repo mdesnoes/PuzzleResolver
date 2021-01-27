@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,14 +20,16 @@ public class IndiceFragment extends Fragment {
     private IndiceAdapter indiceAdapter;
     private RecyclerView rv_listeIndices;
 
-    public List<String> indices;
+    private List<String> indices;
+    private String textIntro;
 
-    public static IndiceFragment newInstance(List<String> indices) {
-        return (new IndiceFragment(indices));
+    public static IndiceFragment newInstance(List<String> indices, String textIntro) {
+        return (new IndiceFragment(indices, textIntro));
     }
 
-    public IndiceFragment(List<String> indices) {
+    public IndiceFragment(List<String> indices, String textIntro) {
         this.indices = indices;
+        this.textIntro =textIntro;
     }
 
     @Override
@@ -46,6 +49,9 @@ public class IndiceFragment extends Fragment {
         for(String indice : this.indices) {
             this.indiceAdapter.ajoute(indice);
         }
+
+        TextView intro = rootView.findViewById(R.id.tv_intro);
+        intro.setText(this.textIntro);
 
         return rootView;
     }

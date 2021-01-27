@@ -24,7 +24,7 @@ public class Puzzle1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puzzle1);
-
+        setTitle("Pasta and Wine");
 
         configureViewPagerAndTabs();
     }
