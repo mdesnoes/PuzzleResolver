@@ -172,14 +172,14 @@ public class Plateau extends ViewGroup {
             cell.setEtat(EtatCellule.INVALIDE);
         } else if(cell.getEtat() == EtatCellule.INVALIDE) { // Si l"etat est INVALIDE, le nouvel etat est VALIDE si c'est possible
 
-            // On verifie que la cellule n'est pas sur une ligne avec une cellule validée
-            if (!grille.verificationCelluleDejaValidee(cell)) {
+            // On verifie que la cellule n'est pas sur une ligne ou une colonne avec une cellule déjà validée
+            if (!grille.presenceCelluleValideeOnColonne(cell.getValColonne()) && !grille.presenceCelluleValideeOnLigne(cell.getValLigne())) {
                 cell.setEtat(EtatCellule.VALIDE);
-                grille.changeEtatOthersCellules(cell, EtatCellule.INVALIDE); // Maj des cellules qui sont sur la même ligne et colonne
+                grille.changeEtatOthersCellules(cell, EtatCellule.INVALIDE); // Maj des cellules qui sont sur la même ligne ou la même colonne
                 grille.addCelluleValidee(cell);
             }
 
-        } else if(cell.getEtat() == EtatCellule.VALIDE) { // Si l"etat est VALIDE, le nouvel etat est VIDE
+        } else if(cell.getEtat() == EtatCellule.VALIDE) { // Si l'etat est VALIDE, le nouvel etat est VIDE
             cell.setEtat(EtatCellule.VIDE);
             grille.removeCelluleInvalidee(cell);
             grille.changeEtatOthersCellules(cell, EtatCellule.VIDE);  // Maj des cellules qui sont sur la même ligne et colonne

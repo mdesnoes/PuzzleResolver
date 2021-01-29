@@ -108,6 +108,11 @@ public class Grille extends View {
                     } else if (cell.getEtat() == EtatCellule.INVALIDE) {
                         this.paintText.setColor(Color.RED);
                         canvas.drawText(TEXT_CELL_INVALIDE, x + 10, y + stepColonne - 5, this.paintText);
+                    } else if (cell.getEtat() == EtatCellule.VIDE) {
+                        // Mise à jour du tableau de resultat pour effacer les resultats si la case est vide
+                        if(!this.nomValColonne.isEmpty()) {
+                            DataResultat.updateResultat(cell.getValLigne(), this.nomValColonne, "");
+                        }
                     }
                 } else {
                     String valLigne = tabAttributsLigne.get(j);
@@ -128,20 +133,6 @@ public class Grille extends View {
             }
         }
         return null;
-    }
-
-    /**
-     * Retourne vrai si la cellule en paramètre est sur la ligne ou la colonne d'une cellule validée
-     * @param cell
-     * @return
-     */
-    public boolean verificationCelluleDejaValidee(Cellule cell) {
-        for(Cellule cellVal : this.cellulesValidees) {
-            if(cellVal.getValLigne().equals(cell.getValLigne()) || cellVal.getValColonne().equals(cell.getValColonne())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -179,7 +170,7 @@ public class Grille extends View {
      * @param valColonne
      * @return
      */
-    private boolean presenceCelluleValideeOnColonne(String valColonne) {
+    public boolean presenceCelluleValideeOnColonne(String valColonne) {
         for(Cellule cellValidee : this.cellulesValidees) {
             if(cellValidee.getValColonne().equals(valColonne)) {
                 return true;
@@ -193,7 +184,7 @@ public class Grille extends View {
      * @param valLigne
      * @return
      */
-    private boolean presenceCelluleValideeOnLigne(String valLigne) {
+    public boolean presenceCelluleValideeOnLigne(String valLigne) {
         for(Cellule cellValidee : this.cellulesValidees) {
             if(cellValidee.getValLigne().equals(valLigne)) {
                 return true;
