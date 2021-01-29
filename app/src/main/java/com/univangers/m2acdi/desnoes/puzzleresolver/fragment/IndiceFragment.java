@@ -21,15 +21,13 @@ public class IndiceFragment extends Fragment {
     private RecyclerView rv_listeIndices;
 
     private List<String> indices;
-    private String textIntro;
 
-    public static IndiceFragment newInstance(List<String> indices, String textIntro) {
-        return (new IndiceFragment(indices, textIntro));
+    public static IndiceFragment newInstance(List<String> indices) {
+        return (new IndiceFragment(indices));
     }
 
-    public IndiceFragment(List<String> indices, String textIntro) {
+    public IndiceFragment(List<String> indices) {
         this.indices = indices;
-        this.textIntro =textIntro;
     }
 
     @Override
@@ -49,9 +47,6 @@ public class IndiceFragment extends Fragment {
         for(String indice : this.indices) {
             this.indiceAdapter.ajoute(indice);
         }
-
-        TextView intro = rootView.findViewById(R.id.tv_intro);
-        intro.setText(this.textIntro);
 
         return rootView;
     }

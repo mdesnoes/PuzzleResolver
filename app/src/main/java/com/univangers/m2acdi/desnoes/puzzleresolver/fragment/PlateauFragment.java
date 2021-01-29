@@ -37,6 +37,9 @@ public class PlateauFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i("TAG", savedInstanceState + "");
+
+
         switch(this.numPuzzle) {
             case 1: return ConfigPuzzle1.configPuzzle1(inflater.inflate(R.layout.fragment_plateau_puzzle1, container, false));
             case 2: return inflater.inflate(R.layout.fragment_plateau_puzzle2, container, false);

@@ -156,24 +156,52 @@ public class Grille extends View {
         for(Cellule cell : this.cellules) {
             // On cherche les cellules qui sont sur la même ligne ou la même colonne
             if(cell.getValColonne().equals(valColonneCurrentCell) || cell.getValLigne().equals(valLigneCurrentCell)) {
-                // On verifie qu ce n'est pas la même cellule que la celulle courante
+
+                // On verifie que ce n'est pas la même cellule que la celulle courante
                 if(!(cell.getValColonne().equals(valColonneCurrentCell) && cell.getValLigne().equals(valLigneCurrentCell))) {
 
                     if(this.cellulesValidees.isEmpty()) {
                         cell.setEtat(nextEtat);
                     } else {
                         // On change l'etat de la cellule si elle n'entre pas en conflit avec les lignes/colonnes des autres celulles validées
-                        for (Cellule cellValidee : this.cellulesValidees) {
-                            if (!cellValidee.getValLigne().equals(cell.getValLigne()) && !cellValidee.getValColonne().equals(cell.getValColonne())) {
-                                cell.setEtat(nextEtat);
-                            }
+                        if(!presenceCelluleValideeOnColonne(cell.getValColonne()) && !presenceCelluleValideeOnLigne(cell.getValLigne())) {
+                            cell.setEtat(nextEtat);
                         }
                     }
-
                 }
+
             }
         }
     }
+
+    /**
+     * Renvoie vrai si une cellule validée est présente sur la colonne "valColonne"
+     * @param valColonne
+     * @return
+     */
+    private boolean presenceCelluleValideeOnColonne(String valColonne) {
+        for(Cellule cellValidee : this.cellulesValidees) {
+            if(cellValidee.getValColonne().equals(valColonne)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Renvoie vrai si une cellule validée est présente sur la ligne "valLigne"
+     * @param valLigne
+     * @return
+     */
+    private boolean presenceCelluleValideeOnLigne(String valLigne) {
+        for(Cellule cellValidee : this.cellulesValidees) {
+            if(cellValidee.getValLigne().equals(valLigne)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
     public void addCelluleValidee(Cellule cell) {

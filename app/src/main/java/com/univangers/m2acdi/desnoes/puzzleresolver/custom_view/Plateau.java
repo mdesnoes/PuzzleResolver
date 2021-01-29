@@ -28,6 +28,8 @@ public class Plateau extends ViewGroup {
         super(context);
     }
 
+
+
     public Plateau(Context context, AttributeSet attrs) {
         super(context, attrs);
 
