@@ -1,19 +1,12 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.univangers.m2acdi.desnoes.puzzleresolver.adapter.PageAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Puzzle1Activity extends AppCompatActivity {
     
