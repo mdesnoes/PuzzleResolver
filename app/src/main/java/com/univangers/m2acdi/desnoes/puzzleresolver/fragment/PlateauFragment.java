@@ -40,7 +40,6 @@ public class PlateauFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("TAG", savedInstanceState + "");
 
         switch(this.numPuzzle) {
             case 1:

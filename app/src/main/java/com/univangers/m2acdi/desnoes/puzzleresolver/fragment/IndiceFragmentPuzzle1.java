@@ -1,6 +1,7 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class IndiceFragmentPuzzle1  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_liste_indice, container, false);
 
+        Log.i("TAG", "#############################");
         this.rv_listeIndices = (RecyclerView) rootView.findViewById(rv_liste_indice);
         this.rv_listeIndices.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
         this.indiceAdapter = new IndiceAdapterPuzzle1(rootView.getContext());
@@ -50,6 +52,7 @@ public class IndiceFragmentPuzzle1  extends Fragment {
         for(String indice : this.indices) {
             this.indiceAdapter.ajoute(indice, ConfigPuzzle1.confirmIndice(indices.indexOf(indice)));
         }
+
 
         return rootView;
     }

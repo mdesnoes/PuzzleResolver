@@ -64,7 +64,6 @@ public class IndiceAdapterPuzzle1 extends RecyclerView.Adapter<IndiceAdapterPuzz
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_textIndice;
-        public boolean isUsed = false;
 
         public ViewHolder(View itemView) {
             super(itemView);

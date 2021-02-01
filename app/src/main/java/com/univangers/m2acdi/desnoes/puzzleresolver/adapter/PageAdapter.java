@@ -1,12 +1,16 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver.adapter;
 
 
+import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
 import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.IndiceFragment;
@@ -100,12 +104,12 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        if(position == 3 && numPuzzle != 1) {
+        if(numPuzzle != 1) {
+            // Supopresion du tableau de resultat pour le remettre à jour
+            super.destroyItem(container, 3, object);
+        } else {
             super.destroyItem(container, position, object);
         }
-
-        if(numPuzzle == 1 && position == 2) {
-            super.destroyItem(container, 2, object);
-        }
     }
+
 }

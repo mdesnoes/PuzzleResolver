@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class IndiceAdapter extends RecyclerView.Adapter<IndiceAdapter.ViewHolder> {
 
     Context context;
-    private ArrayList<Indice> listeIndice;
+    private ArrayList<String> listeIndice;
 
     public IndiceAdapter(Context context) {
         this.context = context;
-        this.listeIndice = new ArrayList<Indice>();
+        this.listeIndice = new ArrayList<String>();
     }
 
     @NonNull
@@ -36,12 +36,10 @@ public class IndiceAdapter extends RecyclerView.Adapter<IndiceAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull IndiceAdapter.ViewHolder holder, int position) {
-        Indice indice = this.listeIndice.get(position);
+        String txtIndice = this.listeIndice.get(position);
 
-        holder.tv_textIndice.setText(indice.getText());
+        holder.tv_textIndice.setText(txtIndice);
         holder.tv_textIndice.setTextColor(Color.DKGRAY);
-
-
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +65,7 @@ public class IndiceAdapter extends RecyclerView.Adapter<IndiceAdapter.ViewHolder
 
 
     public void ajoute(String indice, boolean isUsed) {
-        this.listeIndice.add(new Indice(indice, isUsed));
+        this.listeIndice.add(indice);
 
         this.notifyItemInserted(this.listeIndice.size() - 1);
     }
