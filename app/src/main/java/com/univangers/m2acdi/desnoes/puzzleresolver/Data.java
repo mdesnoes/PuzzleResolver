@@ -9,32 +9,34 @@ public final class Data {
     // Data puzzle 1
     public final static List<String> COLORS = new ArrayList<>(Arrays.asList("", "red", "white", "blue", "green", "yellow"));
     public final static List<String> NAMES = new ArrayList<>(Arrays.asList("", "Andrea", "Holly", "Julie", "Leslie", "Victoria"));
-    public final static List<String> SURNAMES = new ArrayList<>(Arrays.asList("", "Brown", "Davis", "Miller", "Lopez", "Wilson"));
+    public final static List<String> SURNAMES = new ArrayList<>(Arrays.asList("", "Brown", "Davis", "Miller", "Lopes", "Wilson"));
     public final static List<String> PASTAS = new ArrayList<>(Arrays.asList("", "penne", "spaghetti", "lasagne", "farfalle", "ravioli"));
-    public final static List<String> WINES = new ArrayList<>(Arrays.asList("", "italian", "france", "australian", "argentine", "chilean"));
+    public final static List<String> WINES = new ArrayList<>(Arrays.asList("", "italian", "french", "australian", "argentine", "chilean"));
     public final static List<String> AGES = new ArrayList<>(Arrays.asList("", "30", "35", "40", "45", "50"));
 
     public final static List<String> TAB_INDICE_PUZZLE1 = new ArrayList<String>(Arrays.asList(
-            "The woman wearing the White shirt is next to the woman who likes Lombardian wines.",
-            "Ms Miller is somewhere between Ms Davis and Ms Brown, in that order.",
-            "The youngest woman is at the third position.",
-            "The 45 years old woman is somewhere to the right of the woman wearing the Red shirt.",
-            "At the first position is the woman that likes Argentine wines.",
-            "Andrea is exactly to the right of the 35 years old woman.",
-            "The woman wearing the Blue shirt is somewhere between Ms Davis and Holly, in that order.",
-            "Victoria is next to Leslie.",
-            "The woman wearing the Red shirt is somewhere to the left of the woman who likes Australian wines.",
-            "Ms Wilson is next to the 30 years old woman.",
-            "Holly is somewhere to the right of the woman wearing the Red shirt.",
-            "Ms Brown is exactly to the left of Julie.",
-            "The youngest woman likes Penne.",
-            "Ms Wilson is wearing the White shirt.",
-            "The woman who likes Lasagne is somewhere between the woman who likes Italian wines and the woman who likes Spaghetti, in that order.",
-            "At the second position is the woman wearing the Blue shirt.",
-            "The 40 years old woman likes Lasagne.",
-            "Ms Lopes is at the fifth position.",
-            "The woman that likes Australian wines is somewhere between Victoria and the woman who likes wines from Bordeaux, in that order.",
-            "The woman wearing the Yellow shirt is exactly to the left of the 35 years old woman."));
+            "0 - The woman wearing the White shirt is next to the woman who likes Lombardian wines.",
+            "1 - Ms Miller is somewhere between Ms Davis and Ms Brown, in that order.",
+            "2 - The youngest woman is at the third position.",
+            "3 - The 45 years old woman is somewhere to the right of the woman wearing the Red shirt.",
+            "4 - The woman like Chilean wines also likes Farfalle.",
+            "5 - At the first position is the woman that likes Argentine wines.",
+            "6 - Andrea is exactly to the right of the 35 years old woman.",
+            "7 - The woman wearing the Blue shirt is somewhere between Ms Davis and Holly, in that order.",
+            "8 - Victoria is next to Leslie.",
+            "9 - The woman wearing the Red shirt is somewhere to the left of the woman who likes Australian wines.",
+            "10 - Ms Wilson is next to the 30 years old woman.",
+            "11 - Leslie is exactly to the left of the 30 years old woman.",
+            "12 - Holly is somewhere to the right of the woman wearing the Red shirt.",
+            "13 - Ms Brown is exactly to the left of Julie.",
+            "14 - The youngest woman likes Penne.",
+            "15 - Ms Wilson is wearing the White shirt.",
+            "16 - The woman who likes Lasagne is somewhere between the woman who likes Italian wines and the woman who likes Spaghetti, in that order.",
+            "17 - At the second position is the woman wearing the Blue shirt.",
+            "18 - The 40 years old woman likes Lasagne.",
+            "19 - Ms Lopes is at the fifth position.",
+            "20 - The woman that likes Australian wines is somewhere between Victoria and the woman who likes wines from Bordeaux, in that order.",
+            "21 - The woman wearing the Yellow shirt is exactly to the left of the 35 years old woman."));
 
     public final static String TEXT_INTRO_PUZZLE1 = "Five friends are side by side planning a dinner together. Each one enjoys different kinds of pasta and wines from different countries. Figure out which pasta Holly likes the most.";
 

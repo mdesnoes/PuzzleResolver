@@ -1,10 +1,13 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -39,9 +42,11 @@ public class PlateauFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("TAG", savedInstanceState + "");
 
-
         switch(this.numPuzzle) {
-            case 1: return ConfigPuzzle1.configPuzzle1(inflater.inflate(R.layout.fragment_plateau_puzzle1, container, false));
+            case 1:
+                ConfigPuzzle1 configPuzzle1= new ConfigPuzzle1();
+                View viewPlateauPuzzle1 = configPuzzle1.makeConfigurationPuzzle1(inflater.inflate(R.layout.fragment_plateau_puzzle1, container, false));
+                return viewPlateauPuzzle1;
             case 2: return inflater.inflate(R.layout.fragment_plateau_puzzle2, container, false);
             case 3: return inflater.inflate(R.layout.fragment_plateau_puzzle3, container, false);
             default: return null;

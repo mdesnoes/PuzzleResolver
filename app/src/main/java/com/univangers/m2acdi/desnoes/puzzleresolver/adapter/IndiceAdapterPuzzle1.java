@@ -3,7 +3,6 @@ package com.univangers.m2acdi.desnoes.puzzleresolver.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,50 +11,41 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.univangers.m2acdi.desnoes.puzzleresolver.DataResultat;
 import com.univangers.m2acdi.desnoes.puzzleresolver.R;
 
 import java.util.ArrayList;
 
-public class IndiceAdapter extends RecyclerView.Adapter<IndiceAdapter.ViewHolder> {
+public class IndiceAdapterPuzzle1 extends RecyclerView.Adapter<IndiceAdapterPuzzle1.ViewHolder> {
 
     Context context;
     private ArrayList<Indice> listeIndice;
 
-    public IndiceAdapter(Context context) {
+    public IndiceAdapterPuzzle1(Context context) {
         this.context = context;
         this.listeIndice = new ArrayList<Indice>();
     }
 
     @NonNull
     @Override
-    public IndiceAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public IndiceAdapterPuzzle1.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(this.context).inflate(R.layout.ligne_indice, parent, false);
-        return new ViewHolder(view);
+        return new IndiceAdapterPuzzle1.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull IndiceAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull IndiceAdapterPuzzle1.ViewHolder holder, int position) {
         Indice indice = this.listeIndice.get(position);
 
         holder.tv_textIndice.setText(indice.getText());
         holder.tv_textIndice.setTextColor(Color.DKGRAY);
 
-
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!holder.isUsed) {
-                    holder.tv_textIndice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                    holder.tv_textIndice.setTextColor(Color.GREEN);
-                } else {
-                    holder.tv_textIndice.setPaintFlags(0);
-                    holder.tv_textIndice.setTextColor(Color.DKGRAY);
-                }
-                holder.isUsed = !holder.isUsed;
-            }
-        });
+        if(indice.isUsed()) {
+            holder.tv_textIndice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tv_textIndice.setTextColor(Color.GREEN);
+        } else {
+            holder.tv_textIndice.setPaintFlags(0);
+            holder.tv_textIndice.setTextColor(Color.DKGRAY);
+        }
 
         holder.itemView.setTag(position);
     }

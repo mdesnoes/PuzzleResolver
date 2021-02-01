@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
 import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.IndiceFragment;
+import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.IndiceFragmentPuzzle1;
 import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.IntroductionFragment;
 import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.PlateauFragment;
 import com.univangers.m2acdi.desnoes.puzzleresolver.fragment.ResultatFragment;
@@ -68,7 +69,12 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 1:
                 return PlateauFragment.newInstance(this.numPuzzle);
             case 2:
-                return IndiceFragment.newInstance(this.tableauIndice);
+                if(numPuzzle == 1){
+                    return IndiceFragmentPuzzle1.newInstance(this.tableauIndice);
+                } else {
+                    return IndiceFragment.newInstance(this.tableauIndice);
+                }
+
             case 3:
                 return ResultatFragment.newInstance(this.tableauResultat, this.numPuzzle);
             default:
@@ -94,8 +100,12 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        if(position == 3) {
+        if(position == 3 && numPuzzle != 1) {
             super.destroyItem(container, position, object);
+        }
+
+        if(numPuzzle == 1 && position == 2) {
+            super.destroyItem(container, 2, object);
         }
     }
 }
