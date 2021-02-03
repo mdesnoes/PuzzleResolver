@@ -51,12 +51,12 @@ public class Plateau extends ViewGroup {
         DataResultat.initResultatVide(tabValeurAtt4);
 
         this.entetes = new ArrayList<EnteteTableau>();
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt1, true));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt2, true));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt3, true));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt4, false));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt3, false));
-        this.entetes.add(new EnteteTableau(getContext(), tabValeurAtt2, false));
+        this.entetes.add(new EnteteTableau(getContext(), att1, tabValeurAtt1, true));
+        this.entetes.add(new EnteteTableau(getContext(), att2, tabValeurAtt2, true));
+        this.entetes.add(new EnteteTableau(getContext(), att3, tabValeurAtt3, true));
+        this.entetes.add(new EnteteTableau(getContext(), att4, tabValeurAtt4, false));
+        this.entetes.add(new EnteteTableau(getContext(), att3, tabValeurAtt3, false));
+        this.entetes.add(new EnteteTableau(getContext(), att2, tabValeurAtt2, false));
 
 
 
