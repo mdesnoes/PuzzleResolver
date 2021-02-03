@@ -104,10 +104,12 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        if(numPuzzle != 1) {
+        if(position == 3 && numPuzzle != 1) {
             // Supopresion du tableau de resultat pour le remettre à jour
-            super.destroyItem(container, 3, object);
-        } else {
+            super.destroyItem(container, position, object);
+        }
+
+        if(numPuzzle == 1) {
             super.destroyItem(container, position, object);
         }
     }
