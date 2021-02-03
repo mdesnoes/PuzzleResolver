@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.View;
 
@@ -14,14 +15,17 @@ public class EnteteTableau extends View {
 
     private Paint paintText;
     private Paint paintCellule;
+    private Paint paintLabel;
 
     private boolean isVertical = false;
     private List<String> valeurs;
+    private String label;
 
-    public EnteteTableau(Context context, List<String> valeurs, boolean isVertical) {
+    public EnteteTableau(Context context, String label, List<String> valeurs, boolean isVertical) {
         super(context);
         this.valeurs = valeurs;
         this.isVertical = isVertical;
+        this.label = label;
         setUpPaint(); // style rectangle avec bordure
     }
 
@@ -37,6 +41,10 @@ public class EnteteTableau extends View {
         paintText = new Paint();
         paintText.setColor(Color.BLUE);
         paintText.setTextSize(50);
+
+        paintLabel = new Paint();
+        paintLabel.setTextSize(50);
+        paintLabel.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
     }
 
     @Override
@@ -58,17 +66,33 @@ public class EnteteTableau extends View {
 
         float step = width/5;
 
+        // Case contenant le label de l'entête
+        if(isVertical) {
+            canvas.drawRect(0 , 0, width, step, this.paintCellule);
+            canvas.drawText(this.label.toUpperCase(), width/3, step/2 + 12, this.paintLabel);
+        } else {
+            canvas.drawRect(0, 0, step, height, this.paintCellule);
+            canvas.save();
+            canvas.rotate(90, 0, 10);
+            canvas.restore();
+
+            canvas.save();
+            canvas.rotate(-90, 0, height/3);
+            canvas.drawText(this.label.toUpperCase(), -step - 50, height/2, this.paintLabel);
+            canvas.restore();
+        }
+
         for (int i = 0, x = 0; i < this.valeurs.size(); i++, x += step) {
             if(isVertical) {
-                canvas.drawRect(x, 0, x + step, height, this.paintCellule);
+                canvas.drawRect(x, step, x + step, height, this.paintCellule);
 
                 canvas.save();
                 canvas.rotate(90, x, 10);
-                canvas.drawText(this.valeurs.get(i), x, 0, this.paintText);
+                canvas.drawText(this.valeurs.get(i), x + step, 0, this.paintText);
                 canvas.restore();
             } else {
-                canvas.drawRect(0, x, width, x+step, this.paintCellule);
-                canvas.drawText(this.valeurs.get(i), 20, x+50, this.paintText);
+                canvas.drawRect(step, x, width, x+step, this.paintCellule);
+                canvas.drawText(this.valeurs.get(i), 20 + step, x+50, this.paintText);
             }
         }
     }

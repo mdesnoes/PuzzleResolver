@@ -6,15 +6,29 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bienvenue"
-        android:textSize="50dp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        android:orientation="horizontal"
+        android:layout_marginLeft="100dp"
+        android:layout_marginVertical="15dp">
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="4dp"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="Home"
+            android:textSize="50dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
 
     <TextView
@@ -224,6 +238,16 @@
             android:onClick="openActivityPuzzle1"/>
 
     </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="D'autres puzzles à venir ..."
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:layout_marginTop="100dp"/>
 
 
 
