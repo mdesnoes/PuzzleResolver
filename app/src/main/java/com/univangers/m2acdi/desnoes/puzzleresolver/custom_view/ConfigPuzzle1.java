@@ -226,6 +226,11 @@ public class ConfigPuzzle1 {
         listAgeSp.add(view.findViewById(R.id.sp_5_6));
     }
 
+    /**
+     * Permet de gérer l'état des indices
+     * @param indice
+     * @return
+     */
     public static EtatIndice confirmIndice(int indice){
         switch(indice){
             case 0 :
