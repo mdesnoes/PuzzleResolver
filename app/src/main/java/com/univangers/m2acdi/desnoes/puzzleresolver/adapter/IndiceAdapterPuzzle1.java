@@ -3,14 +3,17 @@ package com.univangers.m2acdi.desnoes.puzzleresolver.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.univangers.m2acdi.desnoes.puzzleresolver.EtatIndice;
 import com.univangers.m2acdi.desnoes.puzzleresolver.R;
 
 import java.util.ArrayList;
@@ -37,14 +40,17 @@ public class IndiceAdapterPuzzle1 extends RecyclerView.Adapter<IndiceAdapterPuzz
         Indice indice = this.listeIndice.get(position);
 
         holder.tv_textIndice.setText(indice.getText());
-        holder.tv_textIndice.setTextColor(Color.DKGRAY);
 
-        if(indice.isUsed()) {
-            holder.tv_textIndice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            holder.tv_textIndice.setTextColor(Color.GREEN);
-        } else {
+        Log.i("TAG ---------- ", indice.getEtatIndice().toString());
+        if(indice.getEtatIndice().equals(EtatIndice.INVALIDE)) {
+            holder.tv_textIndice.setPaintFlags(0);
+            holder.tv_textIndice.setTextColor(Color.RED);
+        } else if(indice.getEtatIndice().equals(EtatIndice.VIDE)){
             holder.tv_textIndice.setPaintFlags(0);
             holder.tv_textIndice.setTextColor(Color.DKGRAY);
+        } else {
+            holder.tv_textIndice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tv_textIndice.setTextColor(Color.GREEN);
         }
 
         holder.itemView.setTag(position);
@@ -56,9 +62,8 @@ public class IndiceAdapterPuzzle1 extends RecyclerView.Adapter<IndiceAdapterPuzz
     }
 
 
-    public void ajoute(String indice, boolean isUsed) {
-        this.listeIndice.add(new Indice(indice, isUsed));
-
+    public void ajoute(String indice, EtatIndice etatIndice) {
+        this.listeIndice.add(new Indice(indice, etatIndice));
         this.notifyItemInserted(this.listeIndice.size() - 1);
     }
 

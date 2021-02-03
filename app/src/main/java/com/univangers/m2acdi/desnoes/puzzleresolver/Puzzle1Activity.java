@@ -64,11 +64,11 @@ public class Puzzle1Activity extends AppCompatActivity {
     }
 
     private boolean comparaisonResultatEtResultatCourant(Map<String, Coordonnee> currentRes, Map<String, Coordonnee> res) {
-        Log.i("----------","TEST");
-        for(Map.Entry entry : res.entrySet()) {
+
+        for(Map.Entry entry : res.entrySet()) {Log.i("----------","Key : "+entry.getKey()+" ");
             Coordonnee coordonnee = (Coordonnee) entry.getValue();
             Coordonnee coordonneeRes = currentRes.get(entry.getKey());
-//            Log.i("RES ----------- ", "Res : "+entry.getKey()+" Coordonnees attendues "+coordonnee.getX()+"x "+coordonnee.getY()+"y \n Corrdonnes obtenues "+coordonneeRes.getX()+"x "+coordonneeRes.getY()+"y ");
+
             if(entry.getKey() != null && coordonneeRes != null) {
                 if (coordonnee.getX() != coordonneeRes.getX() || coordonnee.getY() != coordonneeRes.getY()) {
                     return false;
@@ -76,7 +76,6 @@ public class Puzzle1Activity extends AppCompatActivity {
             } else {
                 return false;
             }
-
         }
         return true;
     }

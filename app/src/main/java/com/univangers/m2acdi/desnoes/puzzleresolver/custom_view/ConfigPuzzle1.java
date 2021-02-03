@@ -1,27 +1,22 @@
 package com.univangers.m2acdi.desnoes.puzzleresolver.custom_view;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import androidx.fragment.app.Fragment;
-
 import com.univangers.m2acdi.desnoes.puzzleresolver.Coordonnee;
 import com.univangers.m2acdi.desnoes.puzzleresolver.Data;
 import com.univangers.m2acdi.desnoes.puzzleresolver.DataResultat;
+import com.univangers.m2acdi.desnoes.puzzleresolver.EtatIndice;
 import com.univangers.m2acdi.desnoes.puzzleresolver.R;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ConfigPuzzle1 {
 
@@ -87,18 +82,53 @@ public class ConfigPuzzle1 {
     }
 
     public static void onSelectedSpin(Spinner spin, int x, int y){
-        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> aParentView,
-                                       View aView, int aPosition, long anId) {
-                DataResultat.updateResultatPuzzle1(aParentView.getSelectedItem().toString(), new Coordonnee(x,y));
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        if(y == 1){
 
-            }
-        });
+            spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> aParentView,
+                                           View aView, int aPosition, long anId) {
+
+                    String color = aParentView.getSelectedItem().toString();
+
+                    if(color.equals("red")) {
+                        spin.setBackgroundColor(Color.RED);
+                    } else if(color.equals("white")) {
+                        spin.setBackgroundColor(Color.WHITE);
+                    } else if(color.equals("blue")) {
+                        spin.setBackgroundColor(Color.CYAN);
+                    } else if(color.equals("green")) {
+                        spin.setBackgroundColor(Color.GREEN);
+                    } else if(color.equals("yellow")) {
+                        spin.setBackgroundColor(Color.YELLOW);
+                    } else {
+                        spin.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                    DataResultat.updateResultatPuzzle1(color, new Coordonnee(x,y));
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+        } else {
+            spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> aParentView,
+                                           View aView, int aPosition, long anId) {
+                    DataResultat.updateResultatPuzzle1(aParentView.getSelectedItem().toString(), new Coordonnee(x,y));
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+        }
+
     }
 
     /**
@@ -195,119 +225,306 @@ public class ConfigPuzzle1 {
         listAgeSp.add(view.findViewById(R.id.sp_5_6));
     }
 
-    public static boolean confirmIndice(int indice){
+    public static EtatIndice confirmIndice(int indice){
         switch(indice){
             case 0 :
                 int colIta = DataResultat.getResultatPuzzle1("italian").getX();
                 int colWhite = DataResultat.getResultatPuzzle1("white").getX();
-                return colIta - colWhite == 1 || colIta - colWhite == -1;
+                if(colIta != 0 && colWhite != 0){
+                    if(colIta - colWhite == 1 || colIta - colWhite == -1){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 1 :
                 int colDavis = DataResultat.getResultatPuzzle1("Davis").getX();
                 int colMiller = DataResultat.getResultatPuzzle1("Miller").getX();
                 int colBrown = DataResultat.getResultatPuzzle1("Brown").getX();
-                return colDavis < colMiller && colMiller < colBrown;
+                if(colDavis != 0 && colMiller !=0 && colBrown != 0){
+                    if( colDavis < colMiller && colMiller < colBrown){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
             case 2 :
                 int col30 = DataResultat.getResultatPuzzle1("30").getX();
-                return col30 == 3;
+                if(col30 != 0){
+                    if(col30 == 3){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                }else {
+                    return EtatIndice.VIDE;
+                }
 
             case 3 :
                 int col45 = DataResultat.getResultatPuzzle1("45").getX();
                 int colRed = DataResultat.getResultatPuzzle1("red").getX();
-                return col45 > colRed;
+                if(col45 != 0 && colRed != 0) {
+                    if (col45 > colRed) {
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
             case 4 :
                 int colFarf = DataResultat.getResultatPuzzle1("farfalle").getX();
                 int colChil = DataResultat.getResultatPuzzle1("chilean").getX();
-                return colFarf != 0 && colChil != 0 &&  colFarf == colChil;
+                if(colFarf != 0 && colChil != 0){
+                    if(colChil != 0 && colFarf == colChil){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 5 :
                 int colArg = DataResultat.getResultatPuzzle1("argentine").getX();
-                return colArg == 1;
+                if(colArg != 0){
+                    if(colArg == 1){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 6 :
                 int colAndre = DataResultat.getResultatPuzzle1("Andrea").getX();
                 int col35_2 = DataResultat.getResultatPuzzle1("35").getX();
-                return colAndre - col35_2 == 1;
+                if(colAndre != 0 && col35_2 != 0){
+                    if(colAndre - col35_2 == 1){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 7 :
                 int colDavis_2 = DataResultat.getResultatPuzzle1("Davis").getX();
                 int colBlue = DataResultat.getResultatPuzzle1("blue").getX();
                 int colHoll = DataResultat.getResultatPuzzle1("Holly").getX();
-                return colDavis_2 < colBlue && colDavis_2 < colHoll;
+                if(colDavis_2 != 0 && colBlue !=0 && colHoll != 0){
+                    if(colDavis_2 < colBlue && colDavis_2 < colHoll){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 8 :
                 int colVict = DataResultat.getResultatPuzzle1("Victoria").getX();
                 int colLeslie = DataResultat.getResultatPuzzle1("Leslie").getX();
-                return colVict - colLeslie == 1 || colVict - colLeslie == -1;
+                if(colVict != 0 && colLeslie != 0){
+                    if(colVict - colLeslie == 1 || colVict - colLeslie == -1){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 9 :
                 int colRed_2 = DataResultat.getResultatPuzzle1("red").getX();
                 int colAustr = DataResultat.getResultatPuzzle1("australian").getX();
-                return colRed_2 < colAustr;
+                if(colRed_2 != 0 && colAustr != 0){
+                    if(colRed_2 < colAustr){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 10 :
                 int colWils = DataResultat.getResultatPuzzle1("Wilson").getX();
                 int col30_5 = DataResultat.getResultatPuzzle1("30").getX();
-                return colWils - col30_5 == 1 || colWils - col30_5 == -1;
+                if(colWils != 0 && col30_5 != 0){
+                    if(colWils - col30_5 == 1 || colWils - col30_5 == -1){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
             case 11 :
                 int colLesl = DataResultat.getResultatPuzzle1("Leslie").getX();
                 int col30_2 = DataResultat.getResultatPuzzle1("30").getX();
-                return col30_2 - colLesl == 1;
+                if(colLesl != 0 && col30_2 != 0){
+                    if(col30_2 - colLesl == 1){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
             case 12 :
                 int colHolly = DataResultat.getResultatPuzzle1("Holly").getX();
                 int colRed_3 = DataResultat.getResultatPuzzle1("red").getX();
-                return colHolly > colRed_3;
-
+                if(colHolly != 0 && colRed_3 != 0){
+                    if(colHolly > colRed_3){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.VIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
             case 13 :
                 int colBrown_2 = DataResultat.getResultatPuzzle1("Brown").getX();
                 int colJulie = DataResultat.getResultatPuzzle1("Julie").getX();
-                return colBrown_2 - colJulie == -1;
+                if(colBrown_2 != 0 && colJulie != 0){
+                    if(colBrown_2 - colJulie == -1){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
             case 14 :
                 int colPenne = DataResultat.getResultatPuzzle1("penne").getX();
                 int col30_3 = DataResultat.getResultatPuzzle1("30").getX();
-                return colPenne != 0 && colPenne != 0 && colPenne == col30_3;
+                if(colPenne != 0 && col30_3 != 0){
+                    if(colPenne == col30_3){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 15 :
                 int colWils_2 = DataResultat.getResultatPuzzle1("Wilson").getX();
                 int colWhite_2 = DataResultat.getResultatPuzzle1("white").getX();
-                return  colWils_2 != 0 && colWhite_2 != 0 && colWils_2 == colWhite_2;
+                if(colWils_2 != 0 && colWhite_2 != 0){
+                    if(colWhite_2 != 0 && colWils_2 == colWhite_2){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 16 :
                 int colIta_2 = DataResultat.getResultatPuzzle1("italian").getX();
                 int colLasag = DataResultat.getResultatPuzzle1("lasagne").getX();
                 int colSpag = DataResultat.getResultatPuzzle1("spaghetti").getX();
-                return colIta_2 < colLasag && colIta_2 < colSpag;
+                if(colIta_2 != 0 && colLasag != 0 && colSpag != 0){
+                    if(colIta_2 < colLasag && colIta_2 < colSpag){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 17 :
                 int colBlue_2 = DataResultat.getResultatPuzzle1("blue").getX();
-                return colBlue_2 == 2;
+                if(colBlue_2 != 0){
+                    if(colBlue_2 == 2){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
 
             case 18 :
                 int colLasagn = DataResultat.getResultatPuzzle1("lasagne").getX();
                 int col40 = DataResultat.getResultatPuzzle1("40").getX();
-                return colLasagn != 0 && col40 != 0 && colLasagn == col40;
+                if(colLasagn != 0 && col40 != 0){
+                    if(colLasagn == col40){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
+
             case 19 :
                 int colLopes = DataResultat.getResultatPuzzle1("Lopes").getX();
-                return colLopes == 5;
+                if(colLopes != 0){
+                    if(colLopes == 5){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
             case 20 :
                 int colVicto = DataResultat.getResultatPuzzle1("Victoria").getX();
                 int colAustr_2 = DataResultat.getResultatPuzzle1("australian").getX();
                 int colFrench = DataResultat.getResultatPuzzle1("french").getX();
-                return colVicto < colAustr_2 && colAustr_2 < colFrench;
+                if(colVicto != 0 && colAustr_2 != 0 && colFrench != 0){
+                    if(colVicto < colAustr_2 && colAustr_2 < colFrench){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
             case 21 :
                 int colYello = DataResultat.getResultatPuzzle1("yellow").getX();
                 int col35_3 = DataResultat.getResultatPuzzle1("35").getX();
-                return col35_3 - colYello == 1;
+                if(colYello != 0 && col35_3 != 0){
+                    if(col35_3 - colYello == 1){
+                        return EtatIndice.VALIDE;
+                    } else {
+                        return EtatIndice.INVALIDE;
+                    }
+                } else {
+                    return EtatIndice.VIDE;
+                }
 
-            default : return false;
+            default : return EtatIndice.INVALIDE;
 
         }
 

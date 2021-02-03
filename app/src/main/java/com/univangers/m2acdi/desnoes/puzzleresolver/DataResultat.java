@@ -40,11 +40,11 @@ public class DataResultat {
         put("spaghetti", new Coordonnee(5,4));
 
         // Wine
-        put("Argentine", new Coordonnee(1,5));
-        put("Chilean", new Coordonnee(2,5));
-        put("Italian", new Coordonnee(3,5));
-        put("Australian", new Coordonnee(4,5));
-        put("French", new Coordonnee(5,5));
+        put("argentine", new Coordonnee(1,5));
+        put("chilean", new Coordonnee(2,5));
+        put("italian", new Coordonnee(3,5));
+        put("australian", new Coordonnee(4,5));
+        put("french", new Coordonnee(5,5));
 
         // Age
         put("50", new Coordonnee(1,6));
