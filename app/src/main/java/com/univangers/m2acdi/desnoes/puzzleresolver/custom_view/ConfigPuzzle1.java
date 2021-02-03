@@ -93,18 +93,19 @@ public class ConfigPuzzle1 {
                     String color = aParentView.getSelectedItem().toString();
 
                     if(color.equals("red")) {
-                        spin.setBackgroundColor(Color.RED);
+                        spin.setBackgroundResource(R.drawable.spinner_style_red);
                     } else if(color.equals("white")) {
-                        spin.setBackgroundColor(Color.WHITE);
+                        spin.setBackgroundResource(R.drawable.spinner_style);
                     } else if(color.equals("blue")) {
-                        spin.setBackgroundColor(Color.CYAN);
+                        spin.setBackgroundResource(R.drawable.spinner_style_blue);
                     } else if(color.equals("green")) {
-                        spin.setBackgroundColor(Color.GREEN);
+                        spin.setBackgroundResource(R.drawable.spinner_style_green);
                     } else if(color.equals("yellow")) {
-                        spin.setBackgroundColor(Color.YELLOW);
+                        spin.setBackgroundResource(R.drawable.spinner_style_yellow);
                     } else {
-                        spin.setBackgroundColor(Color.TRANSPARENT);
+                        spin.setBackgroundResource(R.drawable.spinner_style);
                     }
+
                     DataResultat.updateResultatPuzzle1(color, new Coordonnee(x,y));
 
                 }

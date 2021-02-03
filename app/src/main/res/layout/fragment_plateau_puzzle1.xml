@@ -76,14 +76,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="Shirt"/>
 
             <Spinner
                 android:id="@+id/sp_1_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/Widget.AppCompat.Spinner.DropDown"/>
+                android:layout_weight="1"/>
 
             <Spinner
                 android:id="@+id/sp_2_1"
@@ -109,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
+
         </TableRow>
 
         <TableRow
@@ -120,6 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="Name"/>
 
             <Spinner
@@ -163,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="Surname"/>
 
             <Spinner
@@ -206,6 +209,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="Pasta"/>
 
             <Spinner
@@ -249,6 +253,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="Wine"/>
 
             <Spinner
@@ -292,6 +297,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="Age"/>
 
             <Spinner

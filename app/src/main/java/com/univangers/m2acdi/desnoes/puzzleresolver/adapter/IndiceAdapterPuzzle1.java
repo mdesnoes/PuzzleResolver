@@ -41,7 +41,6 @@ public class IndiceAdapterPuzzle1 extends RecyclerView.Adapter<IndiceAdapterPuzz
 
         holder.tv_textIndice.setText(indice.getText());
 
-        Log.i("TAG ---------- ", indice.getEtatIndice().toString());
         if(indice.getEtatIndice().equals(EtatIndice.INVALIDE)) {
             holder.tv_textIndice.setPaintFlags(0);
             holder.tv_textIndice.setTextColor(Color.RED);
